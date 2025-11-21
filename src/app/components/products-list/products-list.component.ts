@@ -27,6 +27,7 @@ import { Product } from '../../core/models/product.models';
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           @for (product of products; track product.id) {
             <app-product-card
+              [id]="product.id"
               [name]="product.name"
               [price]="product.price"
               [created_at]="product.created_at"

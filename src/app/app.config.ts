@@ -11,8 +11,10 @@ import { routes } from './app.routes';
 import { Store } from './core/store/store';
 import { authReducer, initialAuthState } from './state/auth/auth.reducer';
 import { productsReducer, initialProductsState } from './state/products/products.reducer';
+import { cartReducer } from './state/cart/cart.reducer';
 import { AuthEffects } from './state/auth/auth.effects';
 import { ProductsEffects } from './state/products/products.effects';
+import { CartEffects } from './state/cart/cart.effects';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 function initializeStore(store: Store<any>) {
@@ -20,6 +22,7 @@ function initializeStore(store: Store<any>) {
     // Register reducers
     store.registerReducer('auth', authReducer);
     store.registerReducer('products', productsReducer);
+    store.registerReducer('cart', cartReducer);
 
     // Initialize state
     store.dispatch({ type: '@@INIT' });
@@ -35,10 +38,11 @@ export const appConfig: ApplicationConfig = {
     Store,
     AuthEffects,
     ProductsEffects,
+    CartEffects,
     {
       provide: APP_INITIALIZER,
       useFactory: initializeStore,
-      deps: [Store, AuthEffects, ProductsEffects],
+      deps: [Store, AuthEffects, ProductsEffects, CartEffects],
       multi: true,
     },
   ],
