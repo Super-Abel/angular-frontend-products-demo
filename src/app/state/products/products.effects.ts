@@ -35,7 +35,7 @@ export class ProductsEffects {
 
   private handleLoadProducts(filters: any): void {
     const state = this.store.getState();
-    const currentFilters = state.products?.filters || {};
+    const currentFilters = state['products']?.filters || {};
     const mergedFilters = { ...currentFilters, ...filters };
 
     this.api.getProducts(mergedFilters).subscribe({
