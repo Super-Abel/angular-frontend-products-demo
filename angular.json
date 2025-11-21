@@ -30,6 +30,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/angular-frontend-products-demo/",
               "budgets": [
                 {
                   "type": "initial",
