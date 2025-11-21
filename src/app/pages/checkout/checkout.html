@@ -1,0 +1,218 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="mb-8 text-3xl font-bold">Checkout</h1>
+
+  <div *ngIf="!orderPlaced" class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+    <div class="lg:col-span-2">
+      <form [formGroup]="checkoutForm" (ngSubmit)="submitOrder()" class="space-y-6">
+        <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+          <h2 class="mb-4 text-xl font-semibold">Shipping Information</h2>
+
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+              <label class="mb-1 block text-sm font-medium text-gray-700">First Name</label>
+              <input
+                type="text"
+                formControlName="firstName"
+                class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                [class.border-red-500]="checkoutForm.get('firstName')?.invalid && checkoutForm.get('firstName')?.touched"
+              />
+              <p *ngIf="checkoutForm.get('firstName')?.invalid && checkoutForm.get('firstName')?.touched" class="mt-1 text-sm text-red-600">
+                {{ getErrorMessage('firstName') }}
+              </p>
+            </div>
+
+            <div>
+              <label class="mb-1 block text-sm font-medium text-gray-700">Last Name</label>
+              <input
+                type="text"
+                formControlName="lastName"
+                class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                [class.border-red-500]="checkoutForm.get('lastName')?.invalid && checkoutForm.get('lastName')?.touched"
+              />
+              <p *ngIf="checkoutForm.get('lastName')?.invalid && checkoutForm.get('lastName')?.touched" class="mt-1 text-sm text-red-600">
+                {{ getErrorMessage('lastName') }}
+              </p>
+            </div>
+
+            <div>
+              <label class="mb-1 block text-sm font-medium text-gray-700">Email</label>
+              <input
+                type="email"
+                formControlName="email"
+                class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                [class.border-red-500]="checkoutForm.get('email')?.invalid && checkoutForm.get('email')?.touched"
+              />
+              <p *ngIf="checkoutForm.get('email')?.invalid && checkoutForm.get('email')?.touched" class="mt-1 text-sm text-red-600">
+                {{ getErrorMessage('email') }}
+              </p>
+            </div>
+
+            <div>
+              <label class="mb-1 block text-sm font-medium text-gray-700">Phone</label>
+              <input
+                type="tel"
+                formControlName="phone"
+                placeholder="1234567890"
+                class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                [class.border-red-500]="checkoutForm.get('phone')?.invalid && checkoutForm.get('phone')?.touched"
+              />
+              <p *ngIf="checkoutForm.get('phone')?.invalid && checkoutForm.get('phone')?.touched" class="mt-1 text-sm text-red-600">
+                {{ getErrorMessage('phone') }}
+              </p>
+            </div>
+
+            <div class="md:col-span-2">
+              <label class="mb-1 block text-sm font-medium text-gray-700">Address</label>
+              <input
+                type="text"
+                formControlName="address"
+                class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                [class.border-red-500]="checkoutForm.get('address')?.invalid && checkoutForm.get('address')?.touched"
+              />
+              <p *ngIf="checkoutForm.get('address')?.invalid && checkoutForm.get('address')?.touched" class="mt-1 text-sm text-red-600">
+                {{ getErrorMessage('address') }}
+              </p>
+            </div>
+
+            <div>
+              <label class="mb-1 block text-sm font-medium text-gray-700">City</label>
+              <input
+                type="text"
+                formControlName="city"
+                class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                [class.border-red-500]="checkoutForm.get('city')?.invalid && checkoutForm.get('city')?.touched"
+              />
+              <p *ngIf="checkoutForm.get('city')?.invalid && checkoutForm.get('city')?.touched" class="mt-1 text-sm text-red-600">
+                {{ getErrorMessage('city') }}
+              </p>
+            </div>
+
+            <div>
+              <label class="mb-1 block text-sm font-medium text-gray-700">Zip Code</label>
+              <input
+                type="text"
+                formControlName="zipCode"
+                placeholder="12345"
+                class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                [class.border-red-500]="checkoutForm.get('zipCode')?.invalid && checkoutForm.get('zipCode')?.touched"
+              />
+              <p *ngIf="checkoutForm.get('zipCode')?.invalid && checkoutForm.get('zipCode')?.touched" class="mt-1 text-sm text-red-600">
+                {{ getErrorMessage('zipCode') }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+          <h2 class="mb-4 text-xl font-semibold">Payment Information</h2>
+
+          <div class="space-y-4">
+            <div>
+              <label class="mb-1 block text-sm font-medium text-gray-700">Card Number</label>
+              <input
+                type="text"
+                formControlName="cardNumber"
+                placeholder="1234567890123456"
+                maxlength="16"
+                class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                [class.border-red-500]="checkoutForm.get('cardNumber')?.invalid && checkoutForm.get('cardNumber')?.touched"
+              />
+              <p *ngIf="checkoutForm.get('cardNumber')?.invalid && checkoutForm.get('cardNumber')?.touched" class="mt-1 text-sm text-red-600">
+                {{ getErrorMessage('cardNumber') }}
+              </p>
+            </div>
+
+            <div>
+              <label class="mb-1 block text-sm font-medium text-gray-700">Cardholder Name</label>
+              <input
+                type="text"
+                formControlName="cardName"
+                class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                [class.border-red-500]="checkoutForm.get('cardName')?.invalid && checkoutForm.get('cardName')?.touched"
+              />
+              <p *ngIf="checkoutForm.get('cardName')?.invalid && checkoutForm.get('cardName')?.touched" class="mt-1 text-sm text-red-600">
+                {{ getErrorMessage('cardName') }}
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="mb-1 block text-sm font-medium text-gray-700">Expiry Date</label>
+                <input
+                  type="text"
+                  formControlName="expiryDate"
+                  placeholder="MM/YY"
+                  maxlength="5"
+                  class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                  [class.border-red-500]="checkoutForm.get('expiryDate')?.invalid && checkoutForm.get('expiryDate')?.touched"
+                />
+                <p *ngIf="checkoutForm.get('expiryDate')?.invalid && checkoutForm.get('expiryDate')?.touched" class="mt-1 text-sm text-red-600">
+                  {{ getErrorMessage('expiryDate') }}
+                </p>
+              </div>
+
+              <div>
+                <label class="mb-1 block text-sm font-medium text-gray-700">CVV</label>
+                <input
+                  type="text"
+                  formControlName="cvv"
+                  placeholder="123"
+                  maxlength="4"
+                  class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                  [class.border-red-500]="checkoutForm.get('cvv')?.invalid && checkoutForm.get('cvv')?.touched"
+                />
+                <p *ngIf="checkoutForm.get('cvv')?.invalid && checkoutForm.get('cvv')?.touched" class="mt-1 text-sm text-red-600">
+                  {{ getErrorMessage('cvv') }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-400"
+          [disabled]="isSubmitting"
+        >
+          <span *ngIf="!isSubmitting">Place Order</span>
+          <span *ngIf="isSubmitting">Processing...</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="lg:col-span-1">
+      <div class="sticky top-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+        <h2 class="mb-4 text-xl font-semibold">Order Summary</h2>
+
+        <div *ngIf="(cartItems$ | async) as items" class="mb-4 space-y-3">
+          <div *ngFor="let item of items" class="flex justify-between text-sm">
+            <span>{{ item.name }} x{{ item.quantity }}</span>
+            <span>${{ (item.price * item.quantity).toFixed(2) }}</span>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-200 pt-4">
+          <div class="flex justify-between text-xl font-bold">
+            <span>Total:</span>
+            <span>${{ ((cartTotal$ | async) || 0).toFixed(2) }}</span>
+          </div>
+        </div>
+
+        <a
+          routerLink="/cart"
+          class="mt-4 block text-center text-blue-600 hover:text-blue-800"
+        >
+          Back to Cart
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="orderPlaced" class="mx-auto max-w-md rounded-lg border border-green-200 bg-green-50 p-8 text-center">
+    <svg class="mx-auto mb-4 h-16 w-16 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <h2 class="mb-2 text-2xl font-bold text-green-800">Order Placed Successfully!</h2>
+    <p class="mb-4 text-gray-600">Thank you for your purchase. You will be redirected shortly.</p>
+  </div>
+</div>
