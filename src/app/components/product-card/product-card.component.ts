@@ -9,33 +9,46 @@ import { addToCart } from '../../state/cart/cart.actions';
   imports: [CommonModule],
   template: `
     <div
-      class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow"
+      class="rounded-lg border border-gray-200 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
-      <div class="flex justify-between items-start mb-2">
-        <h3 class="text-lg font-semibold text-gray-900">{{ name }}</h3>
-        @if (avgRating !== undefined && avgRating > 0) {
-          <div class="flex items-center gap-1 text-sm">
-            <span class="text-yellow-500">★</span>
-            <span class="text-gray-600">{{ avgRating.toFixed(1) }}</span>
-          </div>
-        }
-      </div>
+      @if (image) {
+        <div class="aspect-square w-full bg-gray-100">
+          <img
+            [src]="image"
+            [alt]="name"
+            class="w-full h-full object-cover"
+            (error)="onImageError($event)"
+          />
+        </div>
+      }
 
-      <div class="flex justify-between items-end">
-        <div>
-          <p class="text-2xl font-bold text-blue-600">{{ price | currency: 'EUR' }}</p>
-          @if (created_at) {
-            <p class="text-xs text-gray-500 mt-1">Added {{ formatDate(created_at) }}</p>
+      <div class="p-4">
+        <div class="flex justify-between items-start mb-2">
+          <h3 class="text-lg font-semibold text-gray-900">{{ name }}</h3>
+          @if (avgRating !== undefined && avgRating > 0) {
+            <div class="flex items-center gap-1 text-sm">
+              <span class="text-yellow-500">★</span>
+              <span class="text-gray-600">{{ avgRating.toFixed(1) }}</span>
+            </div>
           }
         </div>
 
-        <button
-          type="button"
-          (click)="addToCart()"
-          class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
-        >
-          Add to Cart
-        </button>
+        <div class="flex justify-between items-end">
+          <div>
+            <p class="text-2xl font-bold text-blue-600">{{ price | currency: 'EUR' }}</p>
+            @if (created_at) {
+              <p class="text-xs text-gray-500 mt-1">Added {{ formatDate(created_at) }}</p>
+            }
+          </div>
+
+          <button
+            type="button"
+            (click)="addToCart()"
+            class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   `,
@@ -55,6 +68,11 @@ export class ProductCardComponent {
     if (!dateStr) return '';
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  onImageError(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    img.src = '/images/placeholder.jpg';
   }
 
   addToCart(): void {

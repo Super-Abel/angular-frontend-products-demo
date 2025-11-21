@@ -4,6 +4,7 @@ export interface Product {
   price: number;
   created_at: string;
   ratings?: Rating[];
+  image?: string;
 }
 
 export interface Rating {

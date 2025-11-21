@@ -32,6 +32,7 @@ import { Product } from '../../core/models/product.models';
               [price]="product.price"
               [created_at]="product.created_at"
               [avgRating]="calculateAvgRating(product.ratings)"
+              [image]="product.image"
             />
           }
         </div>
