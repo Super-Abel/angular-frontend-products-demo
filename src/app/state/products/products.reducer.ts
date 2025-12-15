@@ -25,7 +25,7 @@ export function productsReducer(
     case ProductsActions.LOAD_PRODUCTS:
       return {
         ...state,
-        loading: true,
+        loading: state.products.length === 0, // Don't show loading if cache exists
         error: null,
       };
 

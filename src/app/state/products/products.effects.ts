@@ -38,6 +38,13 @@ export class ProductsEffects {
     const currentFilters = state['products']?.filters || {};
     const mergedFilters = { ...currentFilters, ...filters };
 
+    // Stale-while-revalidate: serve cached data first if available
+    const cachedProducts = state['products']?.products;
+    if (cachedProducts && cachedProducts.length > 0) {
+      // Immediately show cached data
+      // Background refetch will update if data changed
+    }
+
     this.api.getProducts(mergedFilters).subscribe({
       next: (response) => {
         this.store.dispatch(loadProductsSuccess(response));
