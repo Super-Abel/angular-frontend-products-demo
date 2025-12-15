@@ -47,4 +47,8 @@ export class Cart implements OnInit {
   proceedToCheckout(): void {
     this.router.navigate(['/checkout']);
   }
+
+  trackByItemId(index: number, item: CartItem): number {
+    return item.id;
+  }
 }
