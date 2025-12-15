@@ -1,17 +1,20 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '../product-card/product-card.component';
+import { SkeletonLoaderComponent } from '../skeleton-loader/skeleton-loader.component';
 import { Product } from '../../core/models/product.models';
 
 @Component({
   selector: 'app-products-list',
   standalone: true,
-  imports: [CommonModule, ProductCardComponent],
+  imports: [CommonModule, ProductCardComponent, SkeletonLoaderComponent],
   template: `
     <div class="space-y-4">
       @if (loading) {
-        <div class="flex justify-center py-12">
-          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          @for (i of [1,2,3,4,5,6]; track i) {
+            <app-skeleton-loader customClass="h-80 bg-gray-200 rounded-lg"></app-skeleton-loader>
+          }
         </div>
       } @else if (error) {
         <div class="rounded-lg bg-red-50 border border-red-200 p-4 text-red-700">
