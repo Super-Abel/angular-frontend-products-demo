@@ -3,12 +3,16 @@ export interface Product {
   name: string;
   price: number;
   created_at: string;
+  owner_id: number;
   ratings?: Rating[];
   image?: string;
+  stock: number;
+  lowStockThreshold: number;
+  description?: string;
 }
 
 export interface Rating {
-  id: number;
+  user_id: number;
   value: number;
   comment?: string;
 }
