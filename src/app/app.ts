@@ -1,12 +1,14 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CartSelectors } from './state/cart/cart.selectors';
+import { NotificationToastComponent } from './components/notification-toast/notification-toast.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, CommonModule],
+  imports: [RouterOutlet, CommonModule, NotificationToastComponent, NavbarComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
