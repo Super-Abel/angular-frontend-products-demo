@@ -6,6 +6,9 @@ export interface Product {
   owner_id: number;
   ratings: { user_id: number; value: number }[];
   image?: string;
+  stock: number;
+  lowStockThreshold: number;
+  description?: string;
 }
 
 export const products: Product[] = [
@@ -16,7 +19,10 @@ export const products: Product[] = [
     created_at: '2025-01-10T10:00:00Z',
     owner_id: 10,
     ratings: [{ user_id: 2, value: 4 }],
-    image: '/images/stylo-bleu.jpg'
+    image: '/images/stylo-bleu.jpg',
+    stock: 8,
+    lowStockThreshold: 10,
+    description: 'Stylo à bille bleu, encre fluide',
   },
   {
     id: 2,
@@ -25,7 +31,10 @@ export const products: Product[] = [
     created_at: '2025-02-01T09:30:00Z',
     owner_id: 11,
     ratings: [{ user_id: 3, value: 5 }],
-    image: '/images/cahier-a5.jpg'
+    image: '/images/cahier-a5.jpg',
+    stock: 50,
+    lowStockThreshold: 10,
+    description: 'Cahier spirale A5 180 pages',
   },
 
   {
@@ -35,7 +44,10 @@ export const products: Product[] = [
     created_at: '2025-02-12T12:00:00Z',
     owner_id: 12,
     ratings: [{ user_id: 4, value: 3 }],
-    image: '/images/classeur-rouge.jpg'
+    image: '/images/classeur-rouge.jpg',
+    stock: 0,
+    lowStockThreshold: 5,
+    description: 'Classeur 4 anneaux A4 rouge',
   },
   {
     id: 4,
@@ -44,7 +56,10 @@ export const products: Product[] = [
     created_at: '2025-03-01T08:45:00Z',
     owner_id: 13,
     ratings: [{ user_id: 2, value: 5 }],
-    image: '/images/crayon-hb.jpg'
+    image: '/images/crayon-hb.jpg',
+    stock: 120,
+    lowStockThreshold: 20,
+    description: 'Crayon graphite HB avec gomme',
   },
   {
     id: 5,
@@ -53,7 +68,10 @@ export const products: Product[] = [
     created_at: '2025-03-05T07:20:00Z',
     owner_id: 14,
     ratings: [{ user_id: 1, value: 4 }],
-    image: '/images/regle-30cm.jpg'
+    image: '/images/regle-30cm.jpg',
+    stock: 100,
+    lowStockThreshold: 10,
+    description: 'Règle graduée 30cm en plastique transparent',
   },
   {
     id: 6,
@@ -62,7 +80,10 @@ export const products: Product[] = [
     created_at: '2025-03-10T14:10:00Z',
     owner_id: 15,
     ratings: [{ user_id: 3, value: 4 }],
-    image: '/images/gomme-blanche.jpg'
+    image: '/images/gomme-blanche.jpg',
+    stock: 150,
+    lowStockThreshold: 15,
+    description: 'Gomme blanche pour crayon et stylo',
   },
   {
     id: 7,
@@ -71,7 +92,10 @@ export const products: Product[] = [
     created_at: '2025-03-11T11:00:00Z',
     owner_id: 16,
     ratings: [{ user_id: 6, value: 5 }],
-    image: '/images/surligneur-jaune.jpg'
+    image: '/images/surligneur-jaune.jpg',
+    stock: 80,
+    lowStockThreshold: 10,
+    description: 'Surligneur fluorescent jaune',
   },
   {
     id: 8,
@@ -80,7 +104,10 @@ export const products: Product[] = [
     created_at: '2025-03-12T09:00:00Z',
     owner_id: 17,
     ratings: [{ user_id: 3, value: 3 }],
-    image: '/images/pochette-plastique.jpg'
+    image: '/images/pochette-plastique.jpg',
+    stock: 200,
+    lowStockThreshold: 20,
+    description: 'Pochette plastique transparente A4',
   },
   {
     id: 9,
@@ -89,7 +116,10 @@ export const products: Product[] = [
     created_at: '2025-03-15T10:30:00Z',
     owner_id: 18,
     ratings: [{ user_id: 5, value: 4 }],
-    image: '/images/feutre-noir.jpg'
+    image: '/images/feutre-noir.jpg',
+    stock: 60,
+    lowStockThreshold: 10,
+    description: 'Feutre permanent noir pointe fine',
   },
   {
     id: 10,
@@ -98,7 +128,10 @@ export const products: Product[] = [
     created_at: '2025-03-20T16:00:00Z',
     owner_id: 19,
     ratings: [{ user_id: 7, value: 5 }],
-    image: '/images/bloc-notes.jpg'
+    image: '/images/bloc-notes.jpg',
+    stock: 45,
+    lowStockThreshold: 10,
+    description: 'Bloc notes ligné 100 feuilles',
   },
   {
     id: 11,
@@ -107,7 +140,10 @@ export const products: Product[] = [
     created_at: '2025-03-22T12:40:00Z',
     owner_id: 20,
     ratings: [{ user_id: 2, value: 4 }],
-    image: '/images/feuilles-a4.jpg'
+    image: '/images/feuilles-a4.jpg',
+    stock: 120,
+    lowStockThreshold: 20,
+    description: 'Ramette 500 feuilles A4 80g',
   },
   {
     id: 12,
@@ -116,7 +152,10 @@ export const products: Product[] = [
     created_at: '2025-03-25T13:00:00Z',
     owner_id: 21,
     ratings: [{ user_id: 8, value: 5 }],
-    image: '/images/trousse-bleue.jpg'
+    image: '/images/trousse-bleue.jpg',
+    stock: 35,
+    lowStockThreshold: 5,
+    description: 'Trousse scolaire bleue 2 compartiments',
   },
   {
     id: 13,
@@ -125,7 +164,10 @@ export const products: Product[] = [
     created_at: '2025-04-01T07:00:00Z',
     owner_id: 10,
     ratings: [{ user_id: 9, value: 3 }],
-    image: '/images/colle-baton.jpg'
+    image: '/images/colle-baton.jpg',
+    stock: 90,
+    lowStockThreshold: 15,
+    description: 'Colle en bâton 21g',
   },
   {
     id: 14,
@@ -134,7 +176,10 @@ export const products: Product[] = [
     created_at: '2025-04-03T08:00:00Z',
     owner_id: 11,
     ratings: [{ user_id: 1, value: 4 }],
-    image: '/images/ruban-adhesif.jpg'
+    image: '/images/ruban-adhesif.jpg',
+    stock: 70,
+    lowStockThreshold: 10,
+    description: 'Ruban adhésif transparent avec dévidoir',
   },
   {
     id: 15,
@@ -143,7 +188,10 @@ export const products: Product[] = [
     created_at: '2025-04-05T10:20:00Z',
     owner_id: 12,
     ratings: [{ user_id: 3, value: 5 }],
-    image: '/images/stylo-rouge.jpg'
+    image: '/images/stylo-rouge.jpg',
+    stock: 55,
+    lowStockThreshold: 10,
+    description: 'Stylo bille rouge encre fluide',
   },
   {
     id: 16,
@@ -152,7 +200,10 @@ export const products: Product[] = [
     created_at: '2025-04-10T14:00:00Z',
     owner_id: 13,
     ratings: [{ user_id: 6, value: 4 }],
-    image: '/images/feutres-couleur.jpg'
+    image: '/images/feutres-couleur.jpg',
+    stock: 40,
+    lowStockThreshold: 8,
+    description: 'Set de 10 feutres couleurs assorties',
   },
   {
     id: 17,
@@ -161,7 +212,10 @@ export const products: Product[] = [
     created_at: '2025-04-12T12:30:00Z',
     owner_id: 14,
     ratings: [{ user_id: 5, value: 3 }],
-    image: '/images/pinceau-fin.jpg'
+    image: '/images/pinceau-fin.jpg',
+    stock: 65,
+    lowStockThreshold: 10,
+    description: 'Pinceau fin pour aquarelle et peinture',
   },
   {
     id: 18,
@@ -170,7 +224,10 @@ export const products: Product[] = [
     created_at: '2025-04-15T11:10:00Z',
     owner_id: 15,
     ratings: [{ user_id: 8, value: 5 }],
-    image: '/images/palette-aquarelle.jpg'
+    image: '/images/palette-aquarelle.jpg',
+    stock: 25,
+    lowStockThreshold: 5,
+    description: 'Palette aquarelle 12 couleurs',
   },
   {
     id: 19,
@@ -179,7 +236,10 @@ export const products: Product[] = [
     created_at: '2025-04-18T09:40:00Z',
     owner_id: 16,
     ratings: [{ user_id: 2, value: 4 }],
-    image: '/images/marqueur-effacable.jpg'
+    image: '/images/marqueur-effacable.jpg',
+    stock: 50,
+    lowStockThreshold: 10,
+    description: 'Marqueur effaçable pour tableau blanc',
   },
   {
     id: 20,
@@ -188,6 +248,187 @@ export const products: Product[] = [
     created_at: '2025-04-20T15:00:00Z',
     owner_id: 17,
     ratings: [{ user_id: 9, value: 4 }],
-    image: '/images/tampon-encreur.jpg'
+    image: '/images/tampon-encreur.jpg',
+    stock: 30,
+    lowStockThreshold: 5,
+    description: 'Tampon encreur avec encre bleue',
   },
 ];
+
+// Reviews
+export const reviews: Record<number, any[]> = {
+  1: [
+    {
+      id: 'r1',
+      user: 'Sophie Martin',
+      rating: 4,
+      comment: 'Bon stylo, écriture fluide',
+      createdAt: '2025-11-15T10:30:00Z',
+    },
+    {
+      id: 'r2',
+      user: 'Marc Dubois',
+      rating: 5,
+      comment: 'Excellent produit, je recommande',
+      createdAt: '2025-11-20T14:20:00Z',
+    },
+  ],
+  2: [
+    {
+      id: 'r3',
+      user: 'Julie Leroy',
+      rating: 5,
+      comment: 'Parfait pour mes cours',
+      createdAt: '2025-11-18T09:15:00Z',
+    },
+  ],
+  4: [
+    {
+      id: 'r4',
+      user: 'Thomas Bernard',
+      rating: 5,
+      comment: 'Qualité irréprochable',
+      createdAt: '2025-11-25T16:45:00Z',
+    },
+    {
+      id: 'r5',
+      user: 'Emma Petit',
+      rating: 4,
+      comment: 'Très bien',
+      createdAt: '2025-12-01T11:00:00Z',
+    },
+  ],
+  7: [
+    {
+      id: 'r6',
+      user: 'Lucas Moreau',
+      rating: 5,
+      comment: 'Couleur vive et ne traverse pas le papier',
+      createdAt: '2025-12-02T13:30:00Z',
+    },
+  ],
+};
+
+// Orders
+export const orders = [
+  {
+    id: 'o1',
+    user: 'demo@test.com',
+    total: 23.8,
+    createdAt: '2025-11-10T14:25:00Z',
+    status: 'delivered',
+    items: [
+      { productId: 1, name: 'Stylo Bleu', quantity: 2, price: 2.5 },
+      { productId: 4, name: 'Crayon HB', quantity: 5, price: 1.2 },
+      { productId: 6, name: 'Gomme Blanche', quantity: 3, price: 0.9 },
+    ],
+    address: { street: '15 rue de la Paix', city: 'Paris', zip: '75002', country: 'France' },
+    subtotal: 16.7,
+    shipping: 5.9,
+    taxes: 1.2,
+  },
+  {
+    id: 'o2',
+    user: 'demo@test.com',
+    total: 45.6,
+    createdAt: '2025-11-28T09:15:00Z',
+    status: 'shipped',
+    items: [
+      { productId: 2, name: 'Cahier A5', quantity: 3, price: 3.9 },
+      { productId: 10, name: 'Bloc Notes', quantity: 4, price: 3.0 },
+      { productId: 12, name: 'Trousse Bleue', quantity: 1, price: 6.5 },
+    ],
+    address: { street: '8 avenue Victor Hugo', city: 'Lyon', zip: '69003', country: 'France' },
+    subtotal: 36.2,
+    shipping: 6.5,
+    taxes: 2.9,
+  },
+  {
+    id: 'o3',
+    user: 'demo@test.com',
+    total: 89.4,
+    createdAt: '2025-12-05T16:40:00Z',
+    status: 'processing',
+    items: [
+      { productId: 11, name: 'Feuilles A4', quantity: 5, price: 4.0 },
+      { productId: 16, name: 'Feutres Couleur (Pack x10)', quantity: 2, price: 7.9 },
+      { productId: 18, name: 'Palette Aquarelle', quantity: 3, price: 9.5 },
+    ],
+    address: {
+      street: '22 boulevard Gambetta',
+      city: 'Marseille',
+      zip: '13001',
+      country: 'France',
+    },
+    subtotal: 74.3,
+    shipping: 8.9,
+    taxes: 6.2,
+  },
+];
+
+// User
+export const mockUser = {
+  id: '1',
+  username: 'demo',
+  email: 'demo@test.com',
+  fullName: 'Jean Dupont',
+  defaultAddress: { street: '15 rue de la Paix', city: 'Paris', zip: '75002', country: 'France' },
+  preferences: { newsletter: true, defaultMinRating: 3 },
+  orders: [
+    { id: 'o1', total: 23.8, status: 'delivered', createdAt: '2025-11-10T14:25:00Z' },
+    { id: 'o2', total: 45.6, status: 'shipped', createdAt: '2025-11-28T09:15:00Z' },
+    { id: 'o3', total: 89.4, status: 'processing', createdAt: '2025-12-05T16:40:00Z' },
+  ],
+  wishlistProductIds: [1, 7, 18],
+};
+
+// Admin stats
+export const adminStats = {
+  totalUsers: 342,
+  totalOrders: 128,
+  totalRevenue: 12567.8,
+  topProducts: [
+    { productId: '11', name: 'Feuilles A4', sold: 85, revenue: 340.0 },
+    { productId: '4', name: 'Crayon HB', sold: 156, revenue: 187.2 },
+    { productId: '2', name: 'Cahier A5', sold: 72, revenue: 280.8 },
+    { productId: '16', name: 'Feutres Couleur (Pack x10)', sold: 45, revenue: 355.5 },
+    { productId: '18', name: 'Palette Aquarelle', sold: 38, revenue: 361.0 },
+  ],
+  recentOrders: [
+    {
+      id: 'o3',
+      user: 'demo@test.com',
+      total: 89.4,
+      createdAt: '2025-12-05T16:40:00Z',
+      status: 'processing',
+    },
+    {
+      id: 'o4',
+      user: 'sophie.m@test.com',
+      total: 156.2,
+      createdAt: '2025-12-04T11:20:00Z',
+      status: 'shipped',
+    },
+    {
+      id: 'o5',
+      user: 'marc.d@test.com',
+      total: 34.5,
+      createdAt: '2025-12-03T14:35:00Z',
+      status: 'delivered',
+    },
+    {
+      id: 'o6',
+      user: 'julie.l@test.com',
+      total: 78.9,
+      createdAt: '2025-12-02T09:10:00Z',
+      status: 'delivered',
+    },
+    {
+      id: 'o7',
+      user: 'thomas.b@test.com',
+      total: 215.6,
+      createdAt: '2025-12-01T17:55:00Z',
+      status: 'delivered',
+    },
+  ],
+};
