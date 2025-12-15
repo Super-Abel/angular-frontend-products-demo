@@ -33,4 +33,27 @@ export class ShopApiService {
   getProductRating(productId: number): Observable<ProductRating> {
     return this.http.get<ProductRating>(`/api/products/${productId}/rating/`);
   }
+
+  getProduct(productId: number): Observable<Product> {
+    return this.http.get<Product>(`/api/products/${productId}/`);
+  }
+
+  getProductReviews(productId: number): Observable<any[]> {
+    return this.http.get<any[]>(`/api/products/${productId}/reviews/`);
+  }
+
+  postProductReview(
+    productId: number,
+    review: { rating: number; comment: string },
+  ): Observable<any> {
+    return this.http.post<any>(`/api/products/${productId}/reviews/`, review);
+  }
+
+  get<T>(url: string): Observable<T> {
+    return this.http.get<T>(url);
+  }
+
+  patch<T>(url: string, body: any): Observable<T> {
+    return this.http.patch<T>(url, body);
+  }
 }
