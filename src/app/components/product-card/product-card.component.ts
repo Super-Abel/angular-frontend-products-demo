@@ -2,23 +2,27 @@ import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '../../core/store/store';
 import { addToCart } from '../../state/cart/cart.actions';
+import { WishlistButtonComponent } from '../wishlist-button/wishlist-button.component';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, WishlistButtonComponent],
   template: `
     <div
       class="rounded-lg border border-gray-200 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
       @if (image) {
-        <div class="aspect-square w-full bg-gray-100">
+        <div class="aspect-square w-full bg-gray-100 relative">
           <img
             [src]="image"
             [alt]="name"
             class="w-full h-full object-cover"
             (error)="onImageError($event)"
           />
+          <div class="absolute top-2 right-2">
+            <app-wishlist-button [productId]="id" />
+          </div>
         </div>
       }
 
@@ -44,6 +48,7 @@ import { addToCart } from '../../state/cart/cart.actions';
           <button
             type="button"
             (click)="addToCart()"
+            [attr.aria-label]="'Ajouter ' + name + ' au panier'"
             class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
           >
             Add to Cart
