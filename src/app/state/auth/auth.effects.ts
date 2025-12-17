@@ -8,6 +8,7 @@ import {
   refreshSuccess,
   refreshFailure,
 } from './auth.actions';
+import { loadUser } from '../user/user.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +31,8 @@ export class AuthEffects {
         this.handleLogin(action.payload);
       } else if (action.type === AuthActions.REFRESH_TOKEN) {
         this.handleRefresh(action.payload);
+      } else if (action.type === AuthActions.LOGIN_SUCCESS) {
+        this.store.dispatch(loadUser());
       }
     };
   }

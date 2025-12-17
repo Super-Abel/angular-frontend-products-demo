@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Store } from '../../core/store/store';
+import { logout } from '../../state/auth/auth.actions';
 
 @Component({
   selector: 'app-navbar',
@@ -43,10 +45,23 @@ import { Observable } from 'rxjs';
            class="px-4 py-3 rounded-lg text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition-all">
           Profil
         </a>
+        <button
+          (click)="onLogout()"
+          class="mt-4 w-full px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 transition-all text-left font-medium">
+          Déconnexion
+        </button>
       </nav>
     </aside>
   `,
 })
 export class NavbarComponent {
   @Input() cartItemCount$!: Observable<number>;
+
+  private store = inject(Store);
+  private router = inject(Router);
+
+  onLogout() {
+    this.store.dispatch(logout());
+    this.router.navigate(['/']);
+  }
 }
