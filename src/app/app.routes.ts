@@ -10,7 +10,10 @@ import { Cart } from './pages/cart/cart';
 import { Checkout } from './pages/checkout/checkout';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {
+    path: '',
+    loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
+  },
   { path: 'dev', component: DevIndexComponent },
   { path: 'dev/auth', component: DevAuthComponent },
   { path: 'dev/products', component: DevProductsComponent },
@@ -18,21 +21,24 @@ export const routes: Routes = [
   { path: 'app', component: AppPlaceholderComponent },
   { path: 'login', component: LoginComponent },
 
-  // Shop module (lazy)
+  // Shop module (lazy) - avec layout client
   {
     path: 'shop',
+    loadComponent: () => import('./layouts/client-layout/client-layout.component').then((m) => m.ClientLayoutComponent),
     loadChildren: () => import('./modules/shop/shop.routes').then((m) => m.SHOP_ROUTES),
   },
 
-  // Account module (lazy)
+  // Account module (lazy) - avec layout client
   {
     path: 'account',
+    loadComponent: () => import('./layouts/client-layout/client-layout.component').then((m) => m.ClientLayoutComponent),
     loadChildren: () => import('./modules/account/account.routes').then((m) => m.ACCOUNT_ROUTES),
   },
 
-  // Admin module (lazy)
+  // Admin module (lazy) - avec layout admin
   {
     path: 'admin',
+    loadComponent: () => import('./layouts/admin-layout/admin-layout.component').then((m) => m.AdminLayoutComponent),
     loadChildren: () => import('./modules/admin/admin.routes').then((m) => m.ADMIN_ROUTES),
   },
 

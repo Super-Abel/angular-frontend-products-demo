@@ -43,10 +43,6 @@ import { Observable } from 'rxjs';
            class="px-4 py-3 rounded-lg text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition-all">
           Profil
         </a>
-        <a routerLink="/admin/dashboard" routerLinkActive="bg-green-50 text-green-600 font-bold"
-           class="px-4 py-3 rounded-lg text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all">
-          Admin
-        </a>
       </nav>
     </aside>
   `,
