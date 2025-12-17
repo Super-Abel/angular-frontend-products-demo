@@ -18,7 +18,6 @@ export const routes: Routes = [
   { path: 'dev/auth', component: DevAuthComponent },
   { path: 'dev/products', component: DevProductsComponent },
   { path: 'dev/products/:id/rating', component: DevProductRatingComponent },
-  { path: 'app', component: AppPlaceholderComponent },
   { path: 'login', component: LoginComponent },
 
   // Shop module (lazy) - avec layout client
