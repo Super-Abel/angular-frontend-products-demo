@@ -17,9 +17,9 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
         <nav class="p-4 space-y-2">
           <a routerLink="/admin/dashboard" routerLinkActive="bg-green-50 text-green-600 font-bold"
              class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all">
-            Dashboard
+            📊 Dashboard
           </a>
-          <a routerLink="/" class="block px-4 py-3 rounded-lg text-gray-500 hover:bg-gray-100 transition-all">
+          <a routerLink="/" class="block px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 transition-all font-medium">
             ← Retour accueil
           </a>
         </nav>
