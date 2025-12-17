@@ -29,7 +29,9 @@ export class WishlistButtonComponent {
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
-    this.isInWishlist$ = isInWishlist(this.productId)(this.store.getState$());
+    this.isInWishlist$ = this.store.select('user').pipe(
+      isInWishlist(this.productId)
+    );
   }
 
   toggle() {
