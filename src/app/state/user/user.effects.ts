@@ -19,6 +19,9 @@ export class UserEffects {
         case UserActions.LOAD_USER:
           this.handleLoadUser();
           break;
+        case UserActions.LOAD_USER_SUCCESS:
+          this.store.dispatch({ type: UserActions.LOAD_ORDERS });
+          break;
         case UserActions.UPDATE_USER:
           this.handleUpdateUser(action.payload);
           break;
