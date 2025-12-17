@@ -17,9 +17,15 @@ import { Product } from '../../core/models/product.models';
           }
         </div>
       } @else if (error) {
-        <div class="rounded-lg bg-red-50 border border-red-200 p-4 text-red-700">
-          <p class="font-semibold">Error loading products</p>
-          <p class="text-sm mt-1">{{ error }}</p>
+        <div class="rounded-lg bg-red-50 border border-red-200 p-6 text-center">
+          <p class="font-semibold text-red-800 text-lg mb-2">Erreur de chargement</p>
+          <p class="text-sm text-red-600 mb-4">{{ error }}</p>
+          <button
+            (click)="onRetry()"
+            class="bg-red-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-red-700 transition-colors"
+          >
+            Réessayer
+          </button>
         </div>
       } @else if (products.length === 0) {
         <div class="text-center py-12 text-gray-500">
@@ -55,10 +61,15 @@ export class ProductsListComponent {
   @Input() loading = false;
   @Input() error: string | null = null;
   @Input() totalCount = 0;
+  @Output() retry = new EventEmitter<void>();
 
   calculateAvgRating(ratings?: any[]): number {
     if (!ratings || ratings.length === 0) return 0;
     const sum = ratings.reduce((acc, r) => acc + (r.value || 0), 0);
     return sum / ratings.length;
+  }
+
+  onRetry(): void {
+    this.retry.emit();
   }
 }
