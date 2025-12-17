@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
-import { AuthEffects } from './auth.effects';
-import { Store } from '../../core/store/store';
-import { ShopApiService } from '../../core/services/shop-api.service';
-import { login, loginSuccess, loginFailure } from './auth.actions';
+import { AuthEffects } from '../../../app/state/auth/auth.effects';
+import { Store } from '../../../app/core/store/store';
+import { ShopApiService } from '../../../app/core/services/shop-api.service';
+import { login } from '../../../app/state/auth/auth.actions';
 
 describe('AuthEffects', () => {
   let effects: AuthEffects;

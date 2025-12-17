@@ -1,5 +1,5 @@
-import { cartReducer, CartState } from './cart.reducer';
-import { addToCart, removeFromCart, updateQuantity, clearCart, loadCart } from './cart.actions';
+import { cartReducer, CartState } from '../../../app/state/cart/cart.reducer';
+import { addToCart, removeFromCart, updateQuantity, clearCart, loadCart } from '../../../app/state/cart/cart.actions';
 
 describe('CartReducer', () => {
   const initialState: CartState = {
@@ -10,7 +10,7 @@ describe('CartReducer', () => {
 
   it('should return initial state', () => {
     const action = { type: 'UNKNOWN' };
-    const result = cartReducer(undefined, action);
+    const result = cartReducer(undefined as any, action);
 
     expect(result).toEqual(initialState);
   });

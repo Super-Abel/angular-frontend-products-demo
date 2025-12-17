@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { BehaviorSubject } from 'rxjs';
-import { CartSelectors } from './cart.selectors';
-import { Store } from '../../core/store/store';
-import { CartState } from './cart.reducer';
+import { CartSelectors } from '../../../app/state/cart/cart.selectors';
+import { Store } from '../../../app/core/store/store';
+import { CartState } from '../../../app/state/cart/cart.reducer';
 
 describe('CartSelectors', () => {
   let selectors: CartSelectors;

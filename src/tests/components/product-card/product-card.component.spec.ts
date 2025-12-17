@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ProductCardComponent } from './product-card.component';
-import { Store } from '../../core/store/store';
-import { addToCart } from '../../state/cart/cart.actions';
+import { ProductCardComponent } from '../../../app/components/product-card/product-card.component';
+import { Store } from '../../../app/core/store/store';
+import { addToCart } from '../../../app/state/cart/cart.actions';
 
 describe('ProductCardComponent', () => {
   let component: ProductCardComponent;
@@ -73,7 +73,7 @@ describe('ProductCardComponent', () => {
 
   it('should handle image error', () => {
     const mockImg = { src: '/original.jpg' } as HTMLImageElement;
-    const event = { target: mockImg } as Event;
+    const event = { target: mockImg } as unknown as Event;
 
     component.onImageError(event);
 

@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
-import { ProductsEffects } from './products.effects';
-import { Store } from '../../core/store/store';
-import { ShopApiService } from '../../core/services/shop-api.service';
-import { loadProducts, loadProductsSuccess, loadProductsFailure } from './products.actions';
+import { ProductsEffects } from '../../../app/state/products/products.effects';
+import { Store } from '../../../app/core/store/store';
+import { ShopApiService } from '../../../app/core/services/shop-api.service';
+import { loadProducts } from '../../../app/state/products/products.actions';
 
 describe('ProductsEffects', () => {
   let effects: ProductsEffects;
@@ -36,13 +36,15 @@ describe('ProductsEffects', () => {
     it('should dispatch loadProductsSuccess on success', (done) => {
       const mockResponse = {
         results: [
-          { id: 1, name: 'Product 1', price: 10 },
-          { id: 2, name: 'Product 2', price: 20 },
+          { id: 1, name: 'Product 1', price: 10, created_at: '2025-01-01', owner_id: 1, stock: 10, lowStockThreshold: 5, image: '/img.jpg' },
+          { id: 2, name: 'Product 2', price: 20, created_at: '2025-01-02', owner_id: 1, stock: 5, lowStockThreshold: 2, image: '/img2.jpg' },
         ],
         count: 2,
+        next: null,
+        previous: null,
       };
 
-      mockApi.getProducts.and.returnValue(of(mockResponse));
+      mockApi.getProducts.and.returnValue(of(mockResponse as any));
 
       mockStore.dispatch(loadProducts({ page: 1 }));
 

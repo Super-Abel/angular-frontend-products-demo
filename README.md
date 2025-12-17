@@ -264,8 +264,68 @@ Le projet utilise un store custom (compatible NgRx patterns) pour éviter la ver
 - ✅ Navbar avec sidebar navigation et compteur panier
 - ✅ Types cohérents (wishlistProductIds: number[])
 
-### Non implémenté
-- ❌ Tests unitaires (Jasmine/Karma)
+---
+
+## ✅ Exercice 4 - Production Ready
+
+### UX Améliorations
+- ✅ **Filtres produits** : Debounce 500ms + sync URL query params
+- ✅ **Navigation navigateur** : Back/Forward restaure filtres
+- ✅ **Retry button** : Sur erreur API
+- ✅ **Skeleton loaders** : ProductsList pendant chargement
+- ✅ **Empty states** : Messages "Aucun produit" / "Panier vide"
+
+### Route Guards
+- ✅ **CartGuard** : Empêche accès checkout si panier vide
+
+### Qualité Code
+- ✅ **Tests unitaires** : 37 tests (reducers, selectors, effects, components)
+  - Cart reducer (6 tests)
+  - Auth reducer (7 tests)
+  - Cart selectors (4 tests)
+  - User selectors (4 tests)
+  - Products effects (2 tests)
+  - Auth effects (2 tests)
+  - ProductCard component (5 tests)
+  - LoginForm component (7 tests)
+- ✅ **GitHub Actions CI** : Lint, tests, build sur PR
+- ✅ **Coverage** : Tests avec coverage uploadé sur Codecov
+
+### Architecture
+- ✅ **Layouts modulaires** : client-layout, admin-layout
+- ✅ **Home page professionnelle** : Landing avec sections Features + CTA
+- ✅ **Séparation client/admin** : Interfaces dédiées
+- ✅ **Logout** : Fonctionnalité complète avec navigation
+
+---
+
+## 🧪 Tests
+
+```bash
+npm test                # Lancer tests unitaires
+npm test -- --coverage  # Avec rapport coverage
+```
+
+**37 tests couvrant** :
+- Reducers (cart, auth)
+- Selectors (cart, user)
+- Effects (products, auth)
+- Components (product-card, login-form)
+
+---
+
+## 🔄 CI/CD
+
+**GitHub Actions** (`.github/workflows/ci.yml`) :
+1. Checkout code
+2. Setup Node.js 20
+3. Install dependencies (`npm ci`)
+4. Lint (`npm run lint`)
+5. Tests (`npm test -- --no-watch --browsers=ChromeHeadless --code-coverage`)
+6. Build (`npm run build`)
+7. Upload coverage to Codecov
+
+**Déclencheurs** : Pull requests et push sur main/master
 
 ---
 
