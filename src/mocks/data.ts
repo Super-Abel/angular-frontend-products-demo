@@ -364,6 +364,37 @@ export const orders = [
     shipping: 8.9,
     taxes: 6.2,
   },
+  {
+    id: 'o4',
+    user: 'demo@test.com',
+    total: 156.2,
+    createdAt: '2025-10-22T11:30:00Z',
+    status: 'delivered',
+    items: [
+      { productId: 5, name: 'Règle 30cm', quantity: 10, price: 1.5 },
+      { productId: 7, name: 'Surligneur Jaune', quantity: 20, price: 1.7 },
+      { productId: 15, name: 'Calculatrice', quantity: 5, price: 12.9 },
+    ],
+    address: { street: '15 rue de la Paix', city: 'Paris', zip: '75002', country: 'France' },
+    subtotal: 133.5,
+    shipping: 12.0,
+    taxes: 10.7,
+  },
+  {
+    id: 'o5',
+    user: 'demo@test.com',
+    total: 67.9,
+    createdAt: '2025-10-15T08:45:00Z',
+    status: 'cancelled',
+    items: [
+      { productId: 8, name: 'Agrafeuse', quantity: 3, price: 6.5 },
+      { productId: 9, name: 'Perforeuse', quantity: 2, price: 8.3 },
+    ],
+    address: { street: '15 rue de la Paix', city: 'Paris', zip: '75002', country: 'France' },
+    subtotal: 54.1,
+    shipping: 8.5,
+    taxes: 5.3,
+  },
 ];
 
 // User
@@ -378,8 +409,10 @@ export const mockUser = {
     { id: 'o1', total: 23.8, status: 'delivered', createdAt: '2025-11-10T14:25:00Z' },
     { id: 'o2', total: 45.6, status: 'shipped', createdAt: '2025-11-28T09:15:00Z' },
     { id: 'o3', total: 89.4, status: 'processing', createdAt: '2025-12-05T16:40:00Z' },
+    { id: 'o4', total: 156.2, status: 'delivered', createdAt: '2025-10-22T11:30:00Z' },
+    { id: 'o5', total: 67.9, status: 'cancelled', createdAt: '2025-10-15T08:45:00Z' },
   ],
-  wishlistProductIds: [1, 7, 18],
+  wishlistProductIds: [1, 7, 18, 12, 15],
 };
 
 // Admin stats
