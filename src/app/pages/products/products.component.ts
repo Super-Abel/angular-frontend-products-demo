@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
+import { Subject, takeUntil, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ProductsListComponent } from '../../components/products-list/products-list.component';
 import { Store } from '../../core/store/store';
 import { Product, ProductFilters } from '../../core/models/product.models';
@@ -115,6 +115,7 @@ import {
         [loading]="loading"
         [error]="error"
         [totalCount]="totalCount"
+        (retry)="retryLoad()"
       />
     </section>
   `,
@@ -122,7 +123,10 @@ import {
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   private store = inject(Store);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
   private destroy$ = new Subject<void>();
+  private filtersChanged$ = new Subject<ProductFilters>();
 
   products: Product[] = [];
   loading = false;
@@ -137,6 +141,29 @@ export class ProductsComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit(): void {
+    // Restore filters from URL
+    this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe((params) => {
+      if (Object.keys(params).length > 0) {
+        this.filters = {
+          page: params['page'] ? +params['page'] : 1,
+          pageSize: params['pageSize'] ? +params['pageSize'] : 10,
+          minRating: params['minRating'] ? +params['minRating'] : 0,
+          ordering: params['ordering'] || '-created_at',
+        };
+      }
+      this.store.dispatch(updateFilters(this.filters));
+      this.store.dispatch(loadProducts(this.filters));
+    });
+
+    // Debounce filter changes
+    this.filtersChanged$
+      .pipe(takeUntil(this.destroy$), debounceTime(500), distinctUntilChanged())
+      .subscribe((filters) => {
+        this.updateURL(filters);
+        this.store.dispatch(updateFilters(filters));
+        this.store.dispatch(loadProducts(filters));
+      });
+
     // Subscribe to products state
     selectProducts(this.store.getState$())
       .pipe(takeUntil(this.destroy$))
@@ -161,17 +188,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
       .subscribe((error) => {
         this.error = error;
       });
-
-    selectProductFilters(this.store.getState$())
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((filters) => {
-        if (filters) {
-          this.filters = { ...filters };
-        }
-      });
-
-    // Load initial products
-    this.applyFilters();
   }
 
   ngOnDestroy(): void {
@@ -180,7 +196,18 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   applyFilters(): void {
-    this.store.dispatch(updateFilters(this.filters));
+    this.filtersChanged$.next(this.filters);
+  }
+
+  private updateURL(filters: ProductFilters): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: filters,
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  retryLoad(): void {
     this.store.dispatch(loadProducts(this.filters));
   }
 }
