@@ -191,10 +191,28 @@
           </div>
         </div>
 
-        <div class="border-t border-gray-200 pt-4">
-          <div class="flex justify-between text-xl font-bold">
+        <div class="space-y-2 border-t border-gray-200 pt-4">
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">Sous-total:</span>
+            <span>${{ subtotal.toFixed(2) }}</span>
+          </div>
+          <div *ngIf="discount > 0" class="flex justify-between text-sm text-green-600">
+            <span>Remise:</span>
+            <span>-${{ discount.toFixed(2) }}</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">Livraison:</span>
+            <span [class.text-green-600]="shipping === 0">
+              {{ shipping === 0 ? 'Gratuit' : '$' + shipping.toFixed(2) }}
+            </span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">Taxes (20%):</span>
+            <span>${{ taxes.toFixed(2) }}</span>
+          </div>
+          <div class="flex justify-between border-t border-gray-200 pt-2 text-xl font-bold">
             <span>Total:</span>
-            <span>${{ ((cartTotal$ | async) || 0).toFixed(2) }}</span>
+            <span>${{ grandTotal.toFixed(2) }}</span>
           </div>
         </div>
 

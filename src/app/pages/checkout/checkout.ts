@@ -26,9 +26,23 @@ export class Checkout implements OnInit {
   isSubmitting = false;
   orderPlaced = false;
 
+  // Détails de facturation
+  subtotal = 0;
+  discount = 0;
+  shipping = 5.99;
+  taxes = 0;
+
   ngOnInit(): void {
     this.cartItems$ = this.cartSelectors.selectCartItems();
     this.cartTotal$ = this.cartSelectors.selectCartTotal();
+
+    // Calculer les totaux
+    this.cartTotal$.subscribe((total) => {
+      this.subtotal = total;
+      this.taxes = total * 0.2; // 20% TVA
+      // Livraison gratuite si > 100€
+      this.shipping = total > 100 ? 0 : 5.99;
+    });
 
     this.checkoutForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
@@ -66,6 +80,10 @@ export class Checkout implements OnInit {
         }
       });
     }
+  }
+
+  get grandTotal(): number {
+    return this.subtotal + this.shipping + this.taxes - this.discount;
   }
 
   getErrorMessage(fieldName: string): string {
