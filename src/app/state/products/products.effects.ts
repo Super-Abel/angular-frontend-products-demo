@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Store } from '../../core/store/store';
 import { ShopApiService } from '../../core/services/shop-api.service';
+import { NotificationService } from '../../core/services/notification.service';
 import {
   ProductsActions,
   loadProductsSuccess,
@@ -15,6 +16,7 @@ import {
 export class ProductsEffects {
   private store = inject(Store);
   private api = inject(ShopApiService);
+  private notification = inject(NotificationService);
 
   constructor() {
     this.setupEffects();
@@ -52,6 +54,7 @@ export class ProductsEffects {
       error: (error) => {
         const message = error?.error?.detail || error?.message || 'Failed to load products';
         this.store.dispatch(loadProductsFailure(message));
+        this.notification.error('Échec du chargement des produits');
       },
     });
   }
