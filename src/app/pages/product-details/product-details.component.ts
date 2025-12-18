@@ -9,6 +9,7 @@ import { isInWishlist } from '../../state/user/user.selectors';
 import { ReviewListComponent } from '../../components/review-list/review-list.component';
 import { ReviewFormComponent } from '../../components/review-form/review-form.component';
 import { WishlistButtonComponent } from '../../components/wishlist-button/wishlist-button.component';
+import { NotificationService } from '../../core/services/notification.service';
 
 interface Product {
   id: number;
@@ -121,6 +122,7 @@ export class ProductDetailsComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private store = inject(Store);
   private api = inject(ShopApiService);
+  private notification = inject(NotificationService);
 
   product: Product | null = null;
   reviews: Review[] = [];
@@ -163,6 +165,10 @@ export class ProductDetailsComponent implements OnInit {
 
   onAddToCart() {
     if (this.product) {
+      if (this.product.stock === 0) {
+        this.notification.error('Stock insuffisant pour ce produit');
+        return;
+      }
       this.store.dispatch(
         addToCart(
           {
@@ -174,6 +180,7 @@ export class ProductDetailsComponent implements OnInit {
           1
         )
       );
+      this.notification.success('Produit ajouté au panier');
     }
   }
 
@@ -188,6 +195,10 @@ export class ProductDetailsComponent implements OnInit {
       this.api.postProductReview(this.product.id, review).subscribe({
         next: () => {
           this.loadReviews(this.product!.id);
+          this.notification.success('Avis publié avec succès');
+        },
+        error: () => {
+          this.notification.error('Échec de publication de l\'avis');
         },
       });
     }
