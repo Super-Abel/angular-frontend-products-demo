@@ -27,19 +27,28 @@ import { OrderSummary } from '../../../state/user/user.actions';
           >
             <div class="flex justify-between items-start">
               <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center font-bold text-white text-sm">
+                <div
+                  class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center font-bold text-white text-sm"
+                >
                   #{{ order.id.slice(-2) }}
                 </div>
                 <div>
                   <h3 class="font-bold text-lg text-gray-900">Commande {{ order.id }}</h3>
-                  <p class="text-gray-600 text-sm">{{ order.createdAt | date: 'dd MMM yyyy à HH:mm' }}</p>
+                  <p class="text-gray-600 text-sm">
+                    {{ order.createdAt | date: 'dd MMM yyyy à HH:mm' }}
+                  </p>
                 </div>
               </div>
               <div class="text-right">
-                <p class="text-3xl font-black bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                <p
+                  class="text-3xl font-black bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"
+                >
                   {{ order.total | currency: 'EUR' }}
                 </p>
-                <span [class]="getStatusClass(order.status)" class="inline-block px-4 py-1 rounded-full text-xs font-bold mt-2">
+                <span
+                  [class]="getStatusClass(order.status)"
+                  class="inline-block px-4 py-1 rounded-full text-xs font-bold mt-2"
+                >
                   {{ getStatusLabel(order.status) }}
                 </span>
               </div>
@@ -53,7 +62,10 @@ import { OrderSummary } from '../../../state/user/user.actions';
             </a>
           </div>
 
-          <div *ngIf="(orders$ | async)?.length === 0" class="text-center py-20 bg-white rounded-xl border-2 border-gray-200">
+          <div
+            *ngIf="(orders$ | async)?.length === 0"
+            class="text-center py-20 bg-white rounded-xl border-2 border-gray-200"
+          >
             <div class="text-6xl mb-4 opacity-30">📦</div>
             <p class="text-gray-600 text-lg font-medium">Aucune commande pour le moment</p>
           </div>

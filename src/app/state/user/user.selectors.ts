@@ -4,44 +4,42 @@ import { UserState } from './user.reducer';
 export const selectUser = (state$: Observable<{ user: UserState }>) =>
   state$.pipe(
     map((state) => state.user.user),
-    distinctUntilChanged()
+    distinctUntilChanged(),
   );
 
 export const selectUserLoading = (state$: Observable<{ user: UserState }>) =>
   state$.pipe(
     map((state) => state.user.loading),
-    distinctUntilChanged()
+    distinctUntilChanged(),
   );
 
 export const selectUserOrders = (state$: Observable<{ user: UserState }>) =>
   state$.pipe(
     map((state) => state.user.user?.orders || []),
-    distinctUntilChanged()
+    distinctUntilChanged(),
   );
 
 export const selectWishlist = (state$: Observable<{ user: UserState }>) =>
   state$.pipe(
     map((state) => state.user.user?.wishlistProductIds || []),
-    distinctUntilChanged()
+    distinctUntilChanged(),
   );
 
 export const selectWishlistCount = (state$: Observable<{ user: UserState }>) =>
   state$.pipe(
     map((state) => state.user.user?.wishlistProductIds.length || 0),
-    distinctUntilChanged()
+    distinctUntilChanged(),
   );
 
-export const isInWishlist =
-  (productId: number) => (state$: Observable<{ user: UserState }>) =>
-    state$.pipe(
-      map((state) => state.user.user?.wishlistProductIds.includes(productId) || false),
-      distinctUntilChanged()
-    );
+export const isInWishlist = (productId: number) => (state$: Observable<{ user: UserState }>) =>
+  state$.pipe(
+    map((state) => state.user.user?.wishlistProductIds.includes(productId) || false),
+    distinctUntilChanged(),
+  );
 
 // Memoized: orders by status
-export const selectOrdersByStatus =
-  (status: string) => (state$: Observable<{ user: UserState }>) =>
-    state$.pipe(
-      map((state) => (state.user.user?.orders || []).filter((o) => o.status === status)),
-      distinctUntilChanged()
-    );
+export const selectOrdersByStatus = (status: string) => (state$: Observable<{ user: UserState }>) =>
+  state$.pipe(
+    map((state) => (state.user.user?.orders || []).filter((o) => o.status === status)),
+    distinctUntilChanged(),
+  );

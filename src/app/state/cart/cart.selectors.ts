@@ -23,8 +23,6 @@ export class CartSelectors {
   }
 
   selectCartItem(productId: number): Observable<any | undefined> {
-    return this.selectCartItems().pipe(
-      map((items) => items.find((item) => item.id === productId))
-    );
+    return this.selectCartItems().pipe(map((items) => items.find((item) => item.id === productId)));
   }
 }

@@ -10,13 +10,15 @@ export const SHOP_ROUTES: Routes = [
   {
     path: 'products/:id',
     loadComponent: () =>
-      import('../../pages/product-details/product-details.component').then((m) => m.ProductDetailsComponent),
+      import('../../pages/product-details/product-details.component').then(
+        (m) => m.ProductDetailsComponent,
+      ),
   },
   {
     path: 'rating',
     loadComponent: () =>
       import('../../pages/product-rating/product-rating.component').then(
-        (m) => m.ProductRatingComponent
+        (m) => m.ProductRatingComponent,
       ),
   },
   {

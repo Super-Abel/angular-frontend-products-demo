@@ -10,11 +10,7 @@ const meta: Meta<ProfileComponent> = {
   tags: ['autodocs'],
   decorators: [
     applicationConfig({
-      providers: [
-        provideHttpClient(),
-        provideRouter([]),
-        Store,
-      ],
+      providers: [provideHttpClient(), provideRouter([]), Store],
     }),
   ],
 };

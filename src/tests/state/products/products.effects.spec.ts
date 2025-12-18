@@ -36,8 +36,26 @@ describe('ProductsEffects', () => {
     it('should dispatch loadProductsSuccess on success', (done) => {
       const mockResponse = {
         results: [
-          { id: 1, name: 'Product 1', price: 10, created_at: '2025-01-01', owner_id: 1, stock: 10, lowStockThreshold: 5, image: '/img.jpg' },
-          { id: 2, name: 'Product 2', price: 20, created_at: '2025-01-02', owner_id: 1, stock: 5, lowStockThreshold: 2, image: '/img2.jpg' },
+          {
+            id: 1,
+            name: 'Product 1',
+            price: 10,
+            created_at: '2025-01-01',
+            owner_id: 1,
+            stock: 10,
+            lowStockThreshold: 5,
+            image: '/img.jpg',
+          },
+          {
+            id: 2,
+            name: 'Product 2',
+            price: 20,
+            created_at: '2025-01-02',
+            owner_id: 1,
+            stock: 5,
+            lowStockThreshold: 2,
+            image: '/img2.jpg',
+          },
         ],
         count: 2,
         next: null,

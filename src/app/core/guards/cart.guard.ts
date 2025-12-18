@@ -15,6 +15,6 @@ export const cartGuard: CanActivateFn = () => {
         return false;
       }
       return true;
-    })
+    }),
   );
 };

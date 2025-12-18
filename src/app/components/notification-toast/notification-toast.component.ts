@@ -26,21 +26,23 @@ import { NotificationService } from '../../core/services/notification.service';
       </div>
     </div>
   `,
-  styles: [`
-    @keyframes slide-in {
-      from {
-        transform: translateX(100%);
-        opacity: 0;
+  styles: [
+    `
+      @keyframes slide-in {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
       }
-      to {
-        transform: translateX(0);
-        opacity: 1;
+      .animate-slide-in {
+        animation: slide-in 0.3s ease-out;
       }
-    }
-    .animate-slide-in {
-      animation: slide-in 0.3s ease-out;
-    }
-  `]
+    `,
+  ],
 })
 export class NotificationToastComponent {
   private notificationService = inject(NotificationService);

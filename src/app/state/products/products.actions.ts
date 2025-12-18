@@ -1,5 +1,10 @@
 import { Action } from '../../core/store/store';
-import { Paginated, Product, ProductFilters, ProductRating } from '../../core/models/product.models';
+import {
+  Paginated,
+  Product,
+  ProductFilters,
+  ProductRating,
+} from '../../core/models/product.models';
 
 export const ProductsActions = {
   LOAD_PRODUCTS: '[Products] Load Products',

@@ -10,10 +10,7 @@ const meta: Meta<WishlistButtonComponent> = {
   tags: ['autodocs'],
   decorators: [
     applicationConfig({
-      providers: [
-        provideHttpClient(),
-        Store,
-      ],
+      providers: [provideHttpClient(), Store],
     }),
   ],
 };

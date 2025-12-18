@@ -12,7 +12,7 @@ import { Product } from '../../core/models/product.models';
     <div class="space-y-4">
       @if (loading) {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          @for (i of [1,2,3,4,5,6]; track i) {
+          @for (i of [1, 2, 3, 4, 5, 6]; track i) {
             <app-skeleton-loader customClass="h-80 bg-gray-200 rounded-lg"></app-skeleton-loader>
           }
         </div>

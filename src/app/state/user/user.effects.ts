@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Store } from '../../core/store/store';
-import { UserActions, loadUserSuccess, loadUserFailure, updateUserSuccess, updateUserFailure, loadOrdersSuccess, loadWishlist } from './user.actions';
+import {
+  UserActions,
+  loadUserSuccess,
+  loadUserFailure,
+  updateUserSuccess,
+  updateUserFailure,
+  loadOrdersSuccess,
+  loadWishlist,
+} from './user.actions';
 import { ShopApiService } from '../../core/services/shop-api.service';
 
 const WISHLIST_STORAGE_KEY = 'myshop_wishlist';
@@ -9,7 +17,7 @@ const WISHLIST_STORAGE_KEY = 'myshop_wishlist';
 export class UserEffects {
   constructor(
     private store: Store<any>,
-    private api: ShopApiService
+    private api: ShopApiService,
   ) {
     this.store.getState$().subscribe((state) => {
       const action = (state as any)._lastAction;

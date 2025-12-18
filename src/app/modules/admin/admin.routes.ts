@@ -5,7 +5,7 @@ export const ADMIN_ROUTES: Routes = [
     path: 'dashboard',
     loadComponent: () =>
       import('../../pages/admin/dashboard/dashboard.component').then(
-        (m) => m.AdminDashboardComponent
+        (m) => m.AdminDashboardComponent,
       ),
   },
 ];

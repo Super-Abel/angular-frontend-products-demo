@@ -57,8 +57,8 @@ describe('ProductCardComponent', () => {
           price: 29.99,
           image: '/test.jpg',
         },
-        1
-      )
+        1,
+      ),
     );
   });
 

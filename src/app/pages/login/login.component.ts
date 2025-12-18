@@ -5,7 +5,11 @@ import { Subject, takeUntil } from 'rxjs';
 import { LoginFormComponent } from '../../components/login-form/login-form.component';
 import { Store } from '../../core/store/store';
 import { login } from '../../state/auth/auth.actions';
-import { selectAuthLoading, selectAuthError, selectIsAuthenticated } from '../../state/auth/auth.selectors';
+import {
+  selectAuthLoading,
+  selectAuthError,
+  selectIsAuthenticated,
+} from '../../state/auth/auth.selectors';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +17,7 @@ import { selectAuthLoading, selectAuthError, selectIsAuthenticated } from '../..
   imports: [CommonModule, LoginFormComponent],
   template: `
     <section class="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12">
-      <app-login-form
-        [loading]="loading"
-        [error]="error"
-        (submitForm)="onLogin($event)"
-      />
+      <app-login-form [loading]="loading" [error]="error" (submitForm)="onLogin($event)" />
     </section>
   `,
   styles: [],

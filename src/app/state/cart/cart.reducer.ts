@@ -23,7 +23,7 @@ const calculateItemCount = (items: CartItem[]): number => {
 
 export const cartReducer: Reducer<CartState> = (
   state: CartState = initialState,
-  action: Action
+  action: Action,
 ): CartState => {
   switch (action.type) {
     case CartActions.ADD_TO_CART: {
@@ -33,9 +33,7 @@ export const cartReducer: Reducer<CartState> = (
       let newItems: CartItem[];
       if (existingItemIndex > -1) {
         newItems = state.items.map((item, index) =>
-          index === existingItemIndex
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
+          index === existingItemIndex ? { ...item, quantity: item.quantity + quantity } : item,
         );
       } else {
         newItems = [...state.items, { ...product, quantity }];
@@ -75,7 +73,7 @@ export const cartReducer: Reducer<CartState> = (
       }
 
       const newItems = state.items.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
+        item.id === productId ? { ...item, quantity } : item,
       );
 
       return {

@@ -13,7 +13,7 @@ export type Reducer<T> = (state: T, action: Action) => T;
 })
 export class Store<T extends Record<string, any>> {
   private state$ = new BehaviorSubject<T>({} as T);
-  private reducers: Map<string, Reducer<any>> = new Map();
+  private reducers = new Map<string, Reducer<any>>();
 
   getState(): T {
     return this.state$.value;

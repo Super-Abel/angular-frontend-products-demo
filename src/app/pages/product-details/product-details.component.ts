@@ -55,12 +55,12 @@ interface Review {
           <div>
             <div class="flex items-start justify-between mb-4">
               <h1 class="text-3xl font-bold text-gray-900">{{ product.name }}</h1>
-              <app-wishlist-button
-                [productId]="product.id"
-              />
+              <app-wishlist-button [productId]="product.id" />
             </div>
 
-            <p class="text-4xl font-bold text-blue-600 mb-4">{{ product.price | currency: 'EUR' }}</p>
+            <p class="text-4xl font-bold text-blue-600 mb-4">
+              {{ product.price | currency: 'EUR' }}
+            </p>
 
             @if (product.description) {
               <p class="text-gray-700 mb-6">{{ product.description }}</p>
@@ -69,15 +69,21 @@ interface Review {
             <!-- Stock status -->
             <div class="mb-6">
               @if (product.stock === 0) {
-                <span class="inline-block px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">
+                <span
+                  class="inline-block px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium"
+                >
                   Rupture de stock
                 </span>
               } @else if (product.stock <= product.lowStockThreshold) {
-                <span class="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">
+                <span
+                  class="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium"
+                >
                   Plus que {{ product.stock }} en stock
                 </span>
               } @else {
-                <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                <span
+                  class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium"
+                >
                   En stock
                 </span>
               }
@@ -99,15 +105,11 @@ interface Review {
         <div class="border-t pt-8">
           <h2 class="text-2xl font-bold text-gray-900 mb-6">Avis clients</h2>
 
-          <app-review-list
-            [reviews]="reviews"
-          />
+          <app-review-list [reviews]="reviews" />
 
           <div class="mt-8">
             <h3 class="text-xl font-semibold mb-4">Laisser un avis</h3>
-            <app-review-form
-              (reviewSubmit)="onSubmitReview($event)"
-            />
+            <app-review-form (reviewSubmit)="onSubmitReview($event)" />
           </div>
         </div>
       } @else {
@@ -177,8 +179,8 @@ export class ProductDetailsComponent implements OnInit {
             price: this.product.price,
             image: this.product.image,
           },
-          1
-        )
+          1,
+        ),
       );
       this.notification.success('Produit ajouté au panier');
     }
@@ -198,7 +200,7 @@ export class ProductDetailsComponent implements OnInit {
           this.notification.success('Avis publié avec succès');
         },
         error: () => {
-          this.notification.error('Échec de publication de l\'avis');
+          this.notification.error("Échec de publication de l'avis");
         },
       });
     }

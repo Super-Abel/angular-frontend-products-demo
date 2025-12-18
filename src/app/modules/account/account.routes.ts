@@ -15,7 +15,7 @@ export const ACCOUNT_ROUTES: Routes = [
     path: 'orders/:id',
     loadComponent: () =>
       import('../../pages/account/order-detail/order-detail.component').then(
-        (m) => m.OrderDetailComponent
+        (m) => m.OrderDetailComponent,
       ),
   },
   {

@@ -1,5 +1,10 @@
 import { BehaviorSubject } from 'rxjs';
-import { selectWishlist, selectWishlistCount, isInWishlist, selectOrdersByStatus } from '../../../app/state/user/user.selectors';
+import {
+  selectWishlist,
+  selectWishlistCount,
+  isInWishlist,
+  selectOrdersByStatus,
+} from '../../../app/state/user/user.selectors';
 import { UserState } from '../../../app/state/user/user.reducer';
 import { User } from '../../../app/state/user/user.actions';
 

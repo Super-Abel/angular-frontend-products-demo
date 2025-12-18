@@ -36,11 +36,12 @@ import {
       <div class="mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
         <h2 class="mb-4 text-lg font-semibold text-gray-900">Filters</h2>
 
-        <form (submit)="$event.preventDefault(); applyFilters()" class="grid grid-cols-1 md:grid-cols-6 gap-4">
+        <form
+          (submit)="$event.preventDefault(); applyFilters()"
+          class="grid grid-cols-1 md:grid-cols-6 gap-4"
+        >
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
-              Page
-            </label>
+            <label class="block text-sm font-medium text-gray-700 mb-1"> Page </label>
             <input
               type="number"
               [(ngModel)]="filters.page"
@@ -51,9 +52,7 @@ import {
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
-              Page Size
-            </label>
+            <label class="block text-sm font-medium text-gray-700 mb-1"> Page Size </label>
             <input
               type="number"
               [(ngModel)]="filters.pageSize"
@@ -65,9 +64,7 @@ import {
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
-              Min Rating
-            </label>
+            <label class="block text-sm font-medium text-gray-700 mb-1"> Min Rating </label>
             <input
               type="number"
               [(ngModel)]="filters.minRating"
@@ -80,9 +77,7 @@ import {
           </div>
 
           <div class="md:col-span-2">
-            <label class="block text-sm font-medium text-gray-700 mb-1">
-              Sort By
-            </label>
+            <label class="block text-sm font-medium text-gray-700 mb-1"> Sort By </label>
             <select
               [(ngModel)]="filters.ordering"
               name="ordering"

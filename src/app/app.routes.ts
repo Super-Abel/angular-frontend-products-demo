@@ -23,21 +23,28 @@ export const routes: Routes = [
   // Shop module (lazy) - avec layout client
   {
     path: 'shop',
-    loadComponent: () => import('./layouts/client-layout/client-layout.component').then((m) => m.ClientLayoutComponent),
+    loadComponent: () =>
+      import('./layouts/client-layout/client-layout.component').then(
+        (m) => m.ClientLayoutComponent,
+      ),
     loadChildren: () => import('./modules/shop/shop.routes').then((m) => m.SHOP_ROUTES),
   },
 
   // Account module (lazy) - avec layout client
   {
     path: 'account',
-    loadComponent: () => import('./layouts/client-layout/client-layout.component').then((m) => m.ClientLayoutComponent),
+    loadComponent: () =>
+      import('./layouts/client-layout/client-layout.component').then(
+        (m) => m.ClientLayoutComponent,
+      ),
     loadChildren: () => import('./modules/account/account.routes').then((m) => m.ACCOUNT_ROUTES),
   },
 
   // Admin module (lazy) - avec layout admin
   {
     path: 'admin',
-    loadComponent: () => import('./layouts/admin-layout/admin-layout.component').then((m) => m.AdminLayoutComponent),
+    loadComponent: () =>
+      import('./layouts/admin-layout/admin-layout.component').then((m) => m.AdminLayoutComponent),
     loadChildren: () => import('./modules/admin/admin.routes').then((m) => m.ADMIN_ROUTES),
   },
 

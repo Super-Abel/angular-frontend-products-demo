@@ -37,7 +37,9 @@ import { ShopApiService } from '../../core/services/shop-api.service';
             </div>
             <div class="p-5">
               <h3 class="font-bold text-lg mb-2 text-gray-900">{{ product.name }}</h3>
-              <p class="text-3xl font-black bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent mb-4">
+              <p
+                class="text-3xl font-black bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent mb-4"
+              >
                 {{ product.price | currency: 'EUR' }}
               </p>
               <button
@@ -50,10 +52,15 @@ import { ShopApiService } from '../../core/services/shop-api.service';
           </div>
         </div>
 
-        <div *ngIf="(products$ | async)?.length === 0" class="text-center py-20 bg-white rounded-xl border-2 border-gray-200">
+        <div
+          *ngIf="(products$ | async)?.length === 0"
+          class="text-center py-20 bg-white rounded-xl border-2 border-gray-200"
+        >
           <div class="text-6xl mb-4 opacity-30">💝</div>
           <p class="text-gray-700 text-lg font-medium">Votre wishlist est vide</p>
-          <p class="text-gray-500 text-sm mt-2">Ajoutez vos produits favoris pour les retrouver facilement</p>
+          <p class="text-gray-500 text-sm mt-2">
+            Ajoutez vos produits favoris pour les retrouver facilement
+          </p>
         </div>
       </div>
     </div>
@@ -64,16 +71,16 @@ export class WishlistComponent implements OnInit {
 
   constructor(
     private store: Store<any>,
-    private api: ShopApiService
+    private api: ShopApiService,
   ) {
     const wishlistIds$ = selectWishlist(this.store.getState$());
     this.products$ = wishlistIds$.pipe(
       switchMap((ids) => {
         if (ids.length === 0) return new Observable((obs) => obs.next([]));
-        return this.api.get('/api/products/').pipe(
-          map((res: any) => res.results.filter((p: any) => ids.includes(p.id)))
-        );
-      })
+        return this.api
+          .get('/api/products/')
+          .pipe(map((res: any) => res.results.filter((p: any) => ids.includes(p.id))));
+      }),
     );
   }
 

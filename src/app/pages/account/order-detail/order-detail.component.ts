@@ -89,7 +89,7 @@ export class OrderDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private api: ShopApiService
+    private api: ShopApiService,
   ) {}
 
   ngOnInit() {

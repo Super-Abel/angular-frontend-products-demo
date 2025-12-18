@@ -1,5 +1,13 @@
 import { authReducer, initialAuthState } from '../../../app/state/auth/auth.reducer';
-import { login, loginSuccess, loginFailure, logout, refreshToken, refreshSuccess, refreshFailure } from '../../../app/state/auth/auth.actions';
+import {
+  login,
+  loginSuccess,
+  loginFailure,
+  logout,
+  refreshToken,
+  refreshSuccess,
+  refreshFailure,
+} from '../../../app/state/auth/auth.actions';
 import { AuthState } from '../../../app/core/models/auth.models';
 
 describe('AuthReducer', () => {

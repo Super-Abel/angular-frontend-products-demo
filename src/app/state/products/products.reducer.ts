@@ -19,7 +19,7 @@ export const initialProductsState: ProductsState = {
 
 export function productsReducer(
   state: ProductsState = initialProductsState,
-  action: Action
+  action: Action,
 ): ProductsState {
   switch (action.type) {
     case ProductsActions.LOAD_PRODUCTS:

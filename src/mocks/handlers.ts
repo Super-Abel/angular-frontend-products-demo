@@ -68,7 +68,7 @@ export const handlers = [
 
   // Update user: PATCH /api/me/
   http.patch(`${API}/me/`, async ({ request }) => {
-    const body = await request.json() as any;
+    const body = (await request.json()) as any;
     const updated = { ...mockUser, ...body };
     return HttpResponse.json(updated, { status: 200 });
   }),
@@ -127,7 +127,10 @@ export const handlers = [
   // Apply promo: POST /api/cart/apply-promo/
   http.post(`${API}/cart/apply-promo/`, async ({ request }) => {
     const { items, code } = (await request.json()) as any;
-    const itemsTotal = items.reduce((sum: number, item: any) => sum + item.price * item.quantity, 0);
+    const itemsTotal = items.reduce(
+      (sum: number, item: any) => sum + item.price * item.quantity,
+      0,
+    );
     let discount = 0;
     let shipping = 10;
 
@@ -138,14 +141,17 @@ export const handlers = [
     const taxes = (itemsTotal - discount) * 0.2;
     const grandTotal = itemsTotal - discount + shipping + taxes;
 
-    return HttpResponse.json({
-      itemsTotal,
-      discount,
-      shipping,
-      taxes,
-      grandTotal,
-      appliedPromos: code ? [code] : [],
-    }, { status: 200 });
+    return HttpResponse.json(
+      {
+        itemsTotal,
+        discount,
+        shipping,
+        taxes,
+        grandTotal,
+        appliedPromos: code ? [code] : [],
+      },
+      { status: 200 },
+    );
   }),
 
   // Validate stock: POST /api/cart/validate-stock/
@@ -156,7 +162,7 @@ export const handlers = [
       if (!product || product.stock < item.quantity) {
         return HttpResponse.json(
           { error: `Stock insuffisant pour ${product?.name || item.id}` },
-          { status: 400 }
+          { status: 400 },
         );
       }
     }

@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '../../core/store/store';
 import { isInWishlist } from '../../state/user/user.selectors';
@@ -22,16 +22,14 @@ import { Observable } from 'rxjs';
     </button>
   `,
 })
-export class WishlistButtonComponent {
+export class WishlistButtonComponent implements OnInit {
   @Input() productId!: number;
   isInWishlist$!: Observable<boolean>;
 
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
-    this.isInWishlist$ = this.store.select('user').pipe(
-      isInWishlist(this.productId)
-    );
+    this.isInWishlist$ = this.store.select('user').pipe(isInWishlist(this.productId));
   }
 
   toggle() {

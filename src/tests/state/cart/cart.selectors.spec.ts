@@ -25,10 +25,7 @@ describe('CartSelectors', () => {
     mockStore.select.and.returnValue(cartStateSubject.asObservable().pipe());
 
     TestBed.configureTestingModule({
-      providers: [
-        CartSelectors,
-        { provide: Store, useValue: mockStore },
-      ],
+      providers: [CartSelectors, { provide: Store, useValue: mockStore }],
     });
 
     selectors = TestBed.inject(CartSelectors);

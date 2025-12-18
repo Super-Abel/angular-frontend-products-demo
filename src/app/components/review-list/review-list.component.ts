@@ -16,10 +16,7 @@ interface Review {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="space-y-4">
-      <div
-        *ngFor="let review of reviews; trackBy: trackById"
-        class="border-b pb-4"
-      >
+      <div *ngFor="let review of reviews; trackBy: trackById" class="border-b pb-4">
         <div class="flex justify-between items-start mb-2">
           <div>
             <p class="font-semibold">{{ review.user }}</p>

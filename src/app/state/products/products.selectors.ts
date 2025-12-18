@@ -1,5 +1,10 @@
 import { Observable, map } from 'rxjs';
-import { Product, ProductFilters, ProductRating, ProductsState } from '../../core/models/product.models';
+import {
+  Product,
+  ProductFilters,
+  ProductRating,
+  ProductsState,
+} from '../../core/models/product.models';
 
 export const selectProductsState = (state$: Observable<any>): Observable<ProductsState> =>
   state$.pipe(map((state) => state.products));

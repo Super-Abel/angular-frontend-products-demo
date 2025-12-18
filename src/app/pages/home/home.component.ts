@@ -11,21 +11,26 @@ import { RouterLink } from '@angular/router';
       <!-- Hero Section -->
       <section class="max-w-7xl mx-auto px-6 py-20">
         <div class="text-center mb-16">
-          <h1 class="text-6xl font-black mb-6 bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
+          <h1
+            class="text-6xl font-black mb-6 bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent"
+          >
             MyShop
           </h1>
-          <p class="text-2xl text-gray-600 mb-8">
-            Plateforme E-Commerce Professionnelle
-          </p>
+          <p class="text-2xl text-gray-600 mb-8">Plateforme E-Commerce Professionnelle</p>
           <p class="text-lg text-gray-500 max-w-2xl mx-auto">
-            Solution complète de commerce en ligne avec gestion des produits, commandes, et interface administrateur
+            Solution complète de commerce en ligne avec gestion des produits, commandes, et
+            interface administrateur
           </p>
         </div>
 
         <!-- Features Grid -->
         <div class="grid md:grid-cols-3 gap-8 mb-16">
-          <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-cyan-300 transition-all">
-            <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center mb-4">
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-cyan-300 transition-all"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center mb-4"
+            >
               <span class="text-3xl text-white">🛍️</span>
             </div>
             <h3 class="text-xl font-bold mb-3 text-gray-900">Catalogue Produits</h3>
@@ -39,14 +44,16 @@ import { RouterLink } from '@angular/router';
             </ul>
           </div>
 
-          <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-blue-300 transition-all">
-            <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl flex items-center justify-center mb-4">
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-blue-300 transition-all"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl flex items-center justify-center mb-4"
+            >
               <span class="text-3xl text-white">👤</span>
             </div>
             <h3 class="text-xl font-bold mb-3 text-gray-900">Espace Client</h3>
-            <p class="text-gray-600 mb-4">
-              Gestion complète du compte et des commandes
-            </p>
+            <p class="text-gray-600 mb-4">Gestion complète du compte et des commandes</p>
             <ul class="text-sm text-gray-500 space-y-2">
               <li>✓ Profil personnalisé</li>
               <li>✓ Historique commandes</li>
@@ -54,14 +61,16 @@ import { RouterLink } from '@angular/router';
             </ul>
           </div>
 
-          <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-green-300 transition-all">
-            <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center mb-4">
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-green-300 transition-all"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center mb-4"
+            >
               <span class="text-3xl text-white">⚙️</span>
             </div>
             <h3 class="text-xl font-bold mb-3 text-gray-900">Dashboard Admin</h3>
-            <p class="text-gray-600 mb-4">
-              Interface de gestion pour administrateurs
-            </p>
+            <p class="text-gray-600 mb-4">Interface de gestion pour administrateurs</p>
             <ul class="text-sm text-gray-500 space-y-2">
               <li>✓ Statistiques temps réel</li>
               <li>✓ Gestion produits</li>
@@ -96,10 +105,18 @@ import { RouterLink } from '@angular/router';
         <div class="mt-20 pt-16 border-t-2 border-gray-200">
           <h3 class="text-center text-2xl font-bold text-gray-900 mb-8">Technologies</h3>
           <div class="flex flex-wrap justify-center gap-6 text-gray-600">
-            <div class="px-6 py-3 bg-white rounded-lg border-2 border-gray-200 font-semibold">Angular 18</div>
-            <div class="px-6 py-3 bg-white rounded-lg border-2 border-gray-200 font-semibold">NgRx Store</div>
-            <div class="px-6 py-3 bg-white rounded-lg border-2 border-gray-200 font-semibold">MSW API Mock</div>
-            <div class="px-6 py-3 bg-white rounded-lg border-2 border-gray-200 font-semibold">Tailwind CSS</div>
+            <div class="px-6 py-3 bg-white rounded-lg border-2 border-gray-200 font-semibold">
+              Angular 18
+            </div>
+            <div class="px-6 py-3 bg-white rounded-lg border-2 border-gray-200 font-semibold">
+              NgRx Store
+            </div>
+            <div class="px-6 py-3 bg-white rounded-lg border-2 border-gray-200 font-semibold">
+              MSW API Mock
+            </div>
+            <div class="px-6 py-3 bg-white rounded-lg border-2 border-gray-200 font-semibold">
+              Tailwind CSS
+            </div>
           </div>
         </div>
 

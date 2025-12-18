@@ -1,5 +1,11 @@
 import { cartReducer, CartState } from '../../../app/state/cart/cart.reducer';
-import { addToCart, removeFromCart, updateQuantity, clearCart, loadCart } from '../../../app/state/cart/cart.actions';
+import {
+  addToCart,
+  removeFromCart,
+  updateQuantity,
+  clearCart,
+  loadCart,
+} from '../../../app/state/cart/cart.actions';
 
 describe('CartReducer', () => {
   const initialState: CartState = {

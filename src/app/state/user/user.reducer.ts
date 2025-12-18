@@ -15,7 +15,7 @@ const initialState: UserState = {
 
 export const userReducer: Reducer<UserState> = (
   state: UserState = initialState,
-  action: Action
+  action: Action,
 ): UserState => {
   switch (action.type) {
     case UserActions.LOAD_USER:
