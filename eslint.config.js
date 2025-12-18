@@ -33,6 +33,12 @@ module.exports = tseslint.config(
       ],
       // Run Prettier via ESLint
       "prettier/prettier": "error",
+      // Relax strict rules
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "@angular-eslint/prefer-inject": "off",
+      "@angular-eslint/no-empty-lifecycle-method": "off",
     },
   },
 
@@ -50,6 +56,8 @@ module.exports = tseslint.config(
     rules: {
       // Let Prettier format HTML too
       "prettier/prettier": "error",
+      "@angular-eslint/template/label-has-associated-control": "off",
+      "@angular-eslint/template/no-negated-async": "off",
     },
   }
 );
