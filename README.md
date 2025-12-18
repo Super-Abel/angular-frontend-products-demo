@@ -275,8 +275,17 @@ Le projet utilise un store custom (compatible NgRx patterns) pour éviter la ver
 - ✅ **Skeleton loaders** : ProductsList pendant chargement
 - ✅ **Empty states** : Messages "Aucun produit" / "Panier vide"
 
-### Route Guards
-- ✅ **CartGuard** : Empêche accès checkout si panier vide
+### Checkout & Totaux
+- ✅ **Totaux détaillés** : Sous-total, remise, livraison, taxes (20%), total
+- ✅ **Livraison gratuite** : Si total > 100€
+- ✅ **Route Guards** : CartGuard empêche checkout si panier vide
+
+### Notifications (5 scénarios)
+- ✅ Login échoue (auth.effects)
+- ✅ Chargement produits échoue (products.effects)
+- ✅ Stock insuffisant (product-details)
+- ✅ Création review réussie/échoue (product-details)
+- ✅ Ajout produit au panier (product-details)
 
 ### Qualité Code
 - ✅ **Tests unitaires** : 37 tests (reducers, selectors, effects, components)
@@ -299,7 +308,9 @@ Le projet utilise un store custom (compatible NgRx patterns) pour éviter la ver
 
 ---
 
-## 🧪 Tests
+## 🧪 Quality
+
+### Tests
 
 ```bash
 npm test                # Lancer tests unitaires
@@ -311,6 +322,29 @@ npm test -- --coverage  # Avec rapport coverage
 - Selectors (cart, user)
 - Effects (products, auth)
 - Components (product-card, login-form)
+
+### Linting
+
+```bash
+npm run lint            # Vérifier le code
+```
+
+### Build
+
+```bash
+npm run build           # Build production
+```
+
+### Docker
+
+```bash
+docker build -t myshop .              # Build image
+docker run -p 4200:4200 myshop        # Run container
+# OU
+docker compose up                     # Docker Compose
+```
+
+L'application sera accessible sur http://localhost:4200
 
 ---
 
