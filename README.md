@@ -374,7 +374,7 @@ L'application sera accessible sur http://localhost:4200
 
 ---
 
-## 📝 Commandes
+## 📝  Commandes
 
 ```bash
 npm start              # Dev server :4200
